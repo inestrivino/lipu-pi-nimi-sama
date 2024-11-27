@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<!--TODO:
+    - FIX... all of the js code
+-->
+
+<head>
+    <!--Metadata-->
+    <meta charset="UTF-8">
+    <meta name="description" content="lipu sona pi nimi sama">
+    <meta name="keywords" content="toki pona, rhymes">
+    <meta name="author" content="Inés Triviño">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Title and icon-->
+    <title>lipu pi nimi sama</title>
+    <link rel="icon" type="image/x-icon" href="./img/icon.png">
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
+    <!--CSS-->
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script> 
+    
+</head>
+
+<body>
+    <header>
+        <div id="title">
+            <h1>lipu pi nimi sama</h1>
+        </div>
+    </header> 
+
+    <div id="languageSelection">
+        <button onclick="changeLanguage('eng')"><img class="perso-icon" src="img/gb_flag.png" alt="English"></button>
+        <button onclick="changeLanguage('es')"><img class="perso-icon" src="img/es_flag.png" alt="Español"></button>
+        <button onclick="changeLanguage('tok')"><img class="perso-icon" src="img/tok_flag.png" alt="toki pona"></button>
+    </div>
+
+    <main>
+        <div id="inputInfo">
+            <form>
+                <label for="nimi" id="labelNimi">o pana e nimi:</label>
+                <input type="text" id="nimi">
+                <br>
+        
+                <label for="sama" id="labelSama">o pana e sama:</label>
+                <select name="sama" id="sama">
+                  <option value="sama sama" id="samaOption1">sama sama</option>
+                  <option value="sama poka" id="samaOption2">sama poka</option>
+                </select>
+                <br>
+        
+                <label for="nanpakalama" id="labelSyllabes">o pana e nanpa kalama pini tawa sama:</label>
+                <select name="nanpakalama" id="nanpakalama">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <br>
+        
+                <div><input type="button" value="o tawa" onclick="rhymesRequested()" id="buttonSend"></div>
+                <!--<input type="button" value="o ante e kupulu nimi" onclick=""></input>-->
+            </form> 
+        </div>
+        <div id="outputInfo">
+            <p id="labelResults">nimi sama:</p><br>
+            <output type="text" id="rhymesList" value=""></output>
+        </div>
+    </main>
+
+    <footer>
+        <p id="labelAuthor">jan Ine li pali e lipu ni</p>
+        <div id="socials">
+            <a href="https://github.com/inestrivino" target="_blank">
+                <image class="perso-icon" src="./img/github.png" alt="github icon"></image>
+                <p id="labelGithub">ilo Github</p>
+            </a>
+            <a href="https://www.linkedin.com/in/in%C3%A9s-trivi%C3%B1o-rello-66219b336/" target="_blank">
+                <image class="perso-icon" src="./img/linkedin.png" alt="linkedin icon"></image>
+                <p id="labelLinkedin">ilo LinkedIn</p>
+            </a>
+        </div>
+    </footer>
+    
+</body>
+</html> 
