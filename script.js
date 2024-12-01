@@ -1,92 +1,163 @@
+const wordList = new Set(
+    [
+        'a', 'akesi', 'ala', 'alasa', 'ale', 'ali', 'anpa', 'ante', 'anu', 'awen', 
+        'e', 'en', 'esun', 'ijo', 'ike', 'ilo', 'insa', 'jaki', 'jan', 'jelo', 
+        'jo', 'kala', 'kalama', 'kama', 'kasi', 'ken', 'kepeken', 'kijetesantakalu', 
+        'kili', 'kiwen', 'ko', 'kon', 'ku', 'kule', 'kulupu', 'kute', 'la', 'lape', 
+        'laso', 'lawa', 'len', 'lete', 'li', 'lili', 'linja', 'lipu', 'loje', 'lon', 
+        'luka', 'lukin', 'lupa', 'ma', 'mama', 'mani', 'meli', 'mi', 'mije', 'moku', 
+        'moli', 'monsi', 'monsuta', 'mu', 'mun', 'musi', 'mute', 'nanpa', 'nasa', 
+        'nasin', 'nena', 'ni', 'nimi', 'noka', 'o', 'olin', 'ona', 'open', 'pakala', 
+        'pali', 'palisa', 'pan', 'pana', 'pi', 'pilin', 'pimeja', 'pini', 'pipi', 
+        'poka', 'poki', 'pona', 'pu', 'sama', 'seli', 'selo', 'seme', 'sewi', 
+        'sijelo', 'sike', 'sin', 'sina', 'sinpin', 'sitelen', 'sona', 'soweli', 
+        'suli', 'suno', 'supa', 'suwi', 'tan', 'taso', 'tawa', 'telo', 'tenpo', 
+        'toki', 'tomo', 'tonsi', 'tu', 'unpa', 'uta', 'utala', 'walo', 'wan', 
+        'waso', 'wawa', 'weka', 'wile'
+    ]
+);
+const vowels = new Set(["a", "e", "i", "o", "u"]);
+let language = {
+    eng: {
+        labelNimi: "Write a word:",
+        labelSama: "Choose a type of rhyme:",
+        samaOption1: "Consonant",
+        samaOption2: "Assonant",
+        labelSyllabes: "Choose how many syllabes to rhyme:",
+        buttonSend: "Rhyme",
+        labelResults: "Words that rhyme:",
+        labelAuthor: "By jan Ine",
+        labelLinkedin: "LinkedIn",
+        labelGithub: "Github",
+        wordNotFound : "Word not in list"
+    },
+    es: {
+        labelNimi: "Escribe una palabra:",
+        labelSama: "Elige un tipo de rima:",
+        samaOption1: "Consonante",
+        samaOption2: "Asonante",
+        labelSyllabes: "Elige cuántas silabas a rimar:",
+        buttonSend: "Rimar",
+        labelResults: "Palabras que riman:",
+        labelAuthor: "Hecho por jan Ine",
+        labelLinkedin: "LinkedIn",
+        labelGithub: "Github",
+        wordNotFound: "La palabra no existe en la lista"
+    },
+    tok: {
+        labelNimi: "o pana e nimi:",
+        labelSama: "o pana e sama:",
+        samaOption1: "sama sama",
+        samaOption2: "sama poka",
+        labelSyllabes: "o pana e nanpa kalama pini tawa sama:",
+        buttonSend: "o tawa",
+        labelResults: "nimi sama:",
+        labelAuthor: "jan Ine li pali e lipu ni",
+        labelLinkedin: "ilo Linkedin",
+        labelGithub: "ilo Github",
+        wordNotFound: "nimi lon ala"
+    }
+};
+const rhymesMap = new Map();
+const syllabesMap = new Map();
+
+function initialization(){
+    //initialization for a map in which the key is a substring of a word and the value
+    //is a set of all words that rhyme with that substring
+    wordList.forEach(word => {
+        for (let i = 0; i < word.length - 1; i++) {
+            const rhyme = word.substring(i);
+            if (!rhymesMap.has(rhyme)) {
+                rhymesMap.set(rhyme, new Set());
+            }
+            rhymesMap.get(rhyme).add(word);
+        }
+    });
+
+    //initialization for a map in which the key is a word and the value
+    //is all of its syllabes
+    wordList.forEach(word =>{
+        if (!syllabesMap.has(word)) {
+            //if the word is not yet on the map we create it with an empty set associated
+            syllabesMap.set(word, new Set());
+        }
+        if(word.length < 3){
+            //if the word only has 2 letters then it only has one syllabe (itself)
+            syllabesMap.get(word).add(word);
+        }
+        else{
+            let i = 0; //to go through the letters of the word
+            let x = 2; //to advance letters when a syllabe is added
+            const wordArray = Array.from(word); //array made of letters from the word
+
+            //if the first letter is a vowel (which is not followed by an n+vowel combination), 
+            //that first letter is its own syllabe
+            if(vowels.has(wordArray[0])){
+                if(!(word.length>=3 && wordArray[1]=="n" && !vowels.has(wordArray[2]))){
+                    i++;
+                    syllabesMap.get(word).add(wordArray[0]);
+                }
+            }
+
+            for(i; i<word.length-1; i+=x){
+                x=2;
+                //a basic syllabe is composed of the next 2 letters
+                var toAdd = wordArray[i] + wordArray[i+1];
+                //if the next letter is the last, and it is an n, the n is also part of the syllabe
+                if(i==word.length-2 && wordArray[i+2]=="n"){
+                    toAdd += wordArray[i+2];
+                    x=3;
+                }
+                //if the next letter is an n not followed by a vowel, the n is also part of the syllabe
+                else if(i<word.length-2 && wordArray[i+2]=="n" && !vowels.has(wordArray[i+3])){
+                    toAdd += wordArray[i+2];
+                    x=3;
+                }
+                //once we have fully defined the syllabe we add it to the set
+                syllabesMap.get(word).add(toAdd);
+            }
+        }
+    });
+}
+
 function rhymesRequested(){
+    //this deletes what was previously shown on the list of rhymes
     document.getElementById("rhymesList").value = document.getElementById("rhymesList").defaultValue;
-
-    const wordList = new Set(
-        [
-            'a', 'akesi', 'ala', 'alasa', 'ale', 'ali', 'anpa', 'ante', 'anu', 'awen', 
-            'e', 'en', 'esun', 'ijo', 'ike', 'ilo', 'insa', 'jaki', 'jan', 'jelo', 
-            'jo', 'kala', 'kalama', 'kama', 'kasi', 'ken', 'kepeken', 'kijetesantakalu', 
-            'kili', 'kiwen', 'ko', 'kon', 'ku', 'kule', 'kulupu', 'kute', 'la', 'lape', 
-            'laso', 'lawa', 'len', 'lete', 'li', 'lili', 'linja', 'lipu', 'loje', 'lon', 
-            'luka', 'lukin', 'lupa', 'ma', 'mama', 'mani', 'meli', 'mi', 'mije', 'moku', 
-            'moli', 'monsi', 'monsuta', 'mu', 'mun', 'musi', 'mute', 'nanpa', 'nasa', 
-            'nasin', 'nena', 'ni', 'nimi', 'noka', 'o', 'olin', 'ona', 'open', 'pakala', 
-            'pali', 'palisa', 'pan', 'pana', 'pi', 'pilin', 'pimeja', 'pini', 'pipi', 
-            'poka', 'poki', 'pona', 'pu', 'sama', 'seli', 'selo', 'seme', 'sewi', 
-            'sijelo', 'sike', 'sin', 'sina', 'sinpin', 'sitelen', 'sona', 'soweli', 
-            'suli', 'suno', 'supa', 'suwi', 'tan', 'taso', 'tawa', 'telo', 'tenpo', 
-            'toki', 'tomo', 'tonsi', 'tu', 'unpa', 'uta', 'utala', 'walo', 'wan', 
-            'waso', 'wawa', 'weka', 'wile'
-        ]
-    );
-
+    //now we take the word the user wants to rhyme
     var word = document.getElementById("nimi").value;
 
     if(wordList.has(word)){
-        const rhymes = new Map();
-        wordList.forEach(word => {
-            for (let i = 0; i < word.length - 1; i++) {
-                const rhyme = word.substring(i);
-                if (!rhymes.has(rhyme)) {
-                    rhymes.set(rhyme, new Set());
-                }
-                rhymes.get(rhyme).add(word);
-            }
-        });
-
-        const syllabes = new Map();
-        const vowels = new Set(["a", "e", "i", "o", "u"]);
-        wordList.forEach(word =>{
-            if (!syllabes.has(word)) {
-                syllabes.set(word, new Set());
-            }
-            if(word.length < 3){
-                syllabes.get(word).add(word);
-            }
-            else{
-                let i = 0;
-                let x = 2;
-                if(vowels.has(Array.from(word)[0])){
-                    if(!(word.length>=3 && Array.from(word)[1]=="n" && !vowels.has(Array.from(word)[2]))){
-                        i++;
-                        syllabes.get(word).add(Array.from(word)[0]);
-                    }
-                }
-                for(i; i<word.length-1; i+=x){
-                    x=2;
-                    var toAdd = Array.from(word)[i] + Array.from(word)[i+1];
-                    if(i==word.length-2 && Array.from(word)[i+2]=="n"){
-                        toAdd += Array.from(word)[i+2];
-                        x=3;
-                    }
-                    else if(i<word.length-2 && Array.from(word)[i+2]=="n" && !vowels.has(Array.from(word)[i+3])){
-                        toAdd += Array.from(word)[i+2];
-                        x=3;
-                    }
-                    syllabes.get(word).add(toAdd);
-                }
-            }
-        });
-
         const solution = new Set();
+        //we take the number of syllabes we want to rhyme
         var numberSyllabes = document.getElementById("nanpakalama").value;
+        //we take the type of rhyme we want to do
         var typeSama = document.getElementById("sama").value;
 
+        //this variable will form the text string to be rhymed
         var toRhyme="";
-        for(let j=syllabes.get(word).size-numberSyllabes; j<syllabes.get(word).size; j++){
-            toRhyme += Array.from(syllabes.get(word))[j];
+        //for each syllabe the word has until we've reached the number of syllabes to rhyme
+        //we add the syllabe to the toRhyme string
+        for(let j=syllabesMap.get(word).size-numberSyllabes; j<syllabesMap.get(word).size; j++){
+            toRhyme += Array.from(syllabesMap.get(word))[j];
         }
+
+        //now that we have the string to be rhymed we need to find matches
+        //if we want full rhyme, then we only need to take the set of rhymes from the map for that entry
         if(typeSama == "sama sama"){
-            rhymes.get(toRhyme).forEach(word => solution.add(word));
+            rhymesMap.get(toRhyme).forEach(word => solution.add(word));
         }
+        //if we want a rhyme based on vowels, then we must do other checks
         else{
+            //this array will hold the vowels (and final n if it exists) that our toRhyme sections has
             const vowelArray = new Array();
             let a = 0;
             Array.from(toRhyme).forEach(letter =>{
                 a++;
                 if(vowels.has(letter)||(a==Array.from(toRhyme).length && letter=="n")) vowelArray.push(letter);
             });
-            for (let [key, value] of rhymes.entries()) {
+            //for all entries in the map of rhymes, we check that the entry has the same collection of vowels
+            //(and possibly final n) and if it does match we add its list of rhymes to our solution
+            for (let [key, value] of rhymesMap.entries()) {
                 let wantedLength = Array.from(toRhyme).length;
                 if(Array.from(key).length+1==wantedLength) wantedLength--;
                 else if(Array.from(key).length-1==wantedLength) wantedLength++;
@@ -113,48 +184,22 @@ function rhymesRequested(){
         });
     }
     else{
-        document.getElementById("rhymesList").value = "nimi lon ala";
+        //if the word does not exist we display an error message
+        var text;
+        if (window.location.hash) {
+            if (window.location.hash == "#es") {
+                text = language.es.wordNotFound;
+            }
+            else if (window.location.hash == "#eng") {
+                text = language.eng.wordNotFound;
+            }
+            else if (window.location.hash == "#tok") {
+                text = language.tok.wordNotFound;
+            }
+        }
+        document.getElementById("rhymesList").value = text;
     }
 }
-
-let language = {
-    eng: {
-        labelNimi: "Write a word:",
-        labelSama: "Choose a type of rhyme:",
-        samaOption1: "Consonant",
-        samaOption2: "Assonant",
-        labelSyllabes: "Choose how many syllabes to rhyme:",
-        buttonSend: "Rhyme",
-        labelResults: "Words that rhyme:",
-        labelAuthor: "By jan Ine",
-        labelLinkedin: "LinkedIn",
-        labelGithub: "Github"
-    },
-    es: {
-        labelNimi: "Escribe una palabra:",
-        labelSama: "Elige un tipo de rima:",
-        samaOption1: "Consonante",
-        samaOption2: "Asonante",
-        labelSyllabes: "Elige cuántas silabas a rimar:",
-        buttonSend: "Rimar",
-        labelResults: "Palabras que riman:",
-        labelAuthor: "Hecho por jan Ine",
-        labelLinkedin: "LinkedIn",
-        labelGithub: "Github"
-    },
-    tok: {
-        labelNimi: "o pana e nimi:",
-        labelSama: "o pana e sama:",
-        samaOption1: "sama sama",
-        samaOption2: "sama poka",
-        labelSyllabes: "o pana e nanpa kalama pini tawa sama:",
-        buttonSend: "o tawa",
-        labelResults: "nimi sama:",
-        labelAuthor: "jan Ine li pali e lipu ni",
-        labelLinkedin: "ilo Linkedin",
-        labelGithub: "ilo Github"
-    }
-};
 
 function changeLanguage(lang) {
     location.hash = lang;
@@ -163,18 +208,21 @@ function changeLanguage(lang) {
             for(let [key, value] of Object.entries(language.es)){
                 document.getElementById(key).textContent = value;
                 if(document.getElementById(key).nodeName=="INPUT")document.getElementById(key).value= value;
+                if(document.getElementById("rhymesList").value==language.eng.wordNotFound || document.getElementById("rhymesList").value==language.tok.wordNotFound) document.getElementById("rhymesList").value = language.es.wordNotFound;
             }
         }
         else if (window.location.hash == "#eng") {
             for(let [key, value] of Object.entries(language.eng)){
                 document.getElementById(key).textContent = value;
                 if(document.getElementById(key).nodeName=="INPUT")document.getElementById(key).value= value;
+                if(document.getElementById("rhymesList").value==language.es.wordNotFound || document.getElementById("rhymesList").value==language.tok.wordNotFound) document.getElementById("rhymesList").value = language.eng.wordNotFound;
             }
         }
         else if (window.location.hash == "#tok") {
             for(let [key, value] of Object.entries(language.tok)){
                 document.getElementById(key).textContent = value;
                 if(document.getElementById(key).nodeName=="INPUT")document.getElementById(key).value= value;
+                if(document.getElementById("rhymesList").value==language.es.wordNotFound || document.getElementById("rhymesList").value==language.eng.wordNotFound) document.getElementById("rhymesList").value = language.tok.wordNotFound;
             }
         }
     } 
