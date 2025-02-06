@@ -1,17 +1,17 @@
 const wordList = new Set(
     [
-        'a', 'akesi', 'ala', 'alasa', 'ale', 'ali', 'anpa', 'ante', 'anu', 'awen', 
+        'a', 'n', 'akesi', 'ala', 'alasa', 'ale', 'ali', 'anpa', 'ante', 'anu', 'awen', 
         'e', 'en', 'esun', 'ijo', 'ike', 'ilo', 'insa', 'jaki', 'jan', 'jelo', 
-        'jo', 'kala', 'kalama', 'kama', 'kasi', 'ken', 'kepeken', 'kijetesantakalu', 
-        'kili', 'kiwen', 'ko', 'kon', 'ku', 'kule', 'kulupu', 'kute', 'la', 'lape', 
+        'jo', 'kala', 'kalama', 'kama', 'kasi', 'ken', 'kepeken', 'kijetesantakalu', 'misikeke',
+        'kili', 'kiwen', 'ko', 'kon', 'ku', 'kin', 'kule', 'kulupu', 'kute', 'la', 'lape', 
         'laso', 'lawa', 'len', 'lete', 'li', 'lili', 'linja', 'lipu', 'loje', 'lon', 
         'luka', 'lukin', 'lupa', 'ma', 'mama', 'mani', 'meli', 'mi', 'mije', 'moku', 
         'moli', 'monsi', 'monsuta', 'mu', 'mun', 'musi', 'mute', 'nanpa', 'nasa', 
         'nasin', 'nena', 'ni', 'nimi', 'noka', 'o', 'olin', 'ona', 'open', 'pakala', 
         'pali', 'palisa', 'pan', 'pana', 'pi', 'pilin', 'pimeja', 'pini', 'pipi', 
         'poka', 'poki', 'pona', 'pu', 'sama', 'seli', 'selo', 'seme', 'sewi', 
-        'sijelo', 'sike', 'sin', 'sina', 'sinpin', 'sitelen', 'sona', 'soweli', 
-        'suli', 'suno', 'supa', 'suwi', 'tan', 'taso', 'tawa', 'telo', 'tenpo', 
+        'sijelo', 'sike', 'sin', 'sina', 'soko', 'sinpin', 'sitelen', 'sona', 'soweli', 
+        'suli', 'su', 'suno', 'supa', 'suwi', 'tan', 'taso', 'tawa', 'telo', 'tenpo', 
         'toki', 'tomo', 'tonsi', 'tu', 'unpa', 'uta', 'utala', 'walo', 'wan', 
         'waso', 'wawa', 'weka', 'wile'
     ]
@@ -27,8 +27,9 @@ let language = {
         buttonSend: "Rhyme",
         labelResults: "Words that rhyme:",
         labelAuthor: "By jan Ine",
-        labelLinkedin: "LinkedIn",
+        labelWebsite: "My website",
         labelGithub: "Github",
+        labelGitlab: "Gitlab",
         wordNotFound : "Word not in list"
     },
     es: {
@@ -40,8 +41,9 @@ let language = {
         buttonSend: "Rimar",
         labelResults: "Palabras que riman:",
         labelAuthor: "Hecho por jan Ine",
-        labelLinkedin: "LinkedIn",
+        labelWebsite: "Mi web",
         labelGithub: "Github",
+        labelGitlab: "Gitlab",
         wordNotFound: "La palabra no existe en la lista"
     },
     tok: {
@@ -53,9 +55,24 @@ let language = {
         buttonSend: "o tawa",
         labelResults: "nimi sama:",
         labelAuthor: "tan jan Ine",
-        labelLinkedin: "ilo Linkedin",
+        labelWebsite: "lipu mi",
         labelGithub: "ilo Github",
+        labelGitlab: "ilo Gitlab",
         wordNotFound: "nimi li lon ala"
+    },
+    fr: {
+        labelNimi: "Donnez le mot:",
+        labelSama: "Donnez le type de rime:",
+        samaOption1: "Assonant",
+        samaOption2: "Consonant",
+        labelSyllabes: "Donnez le nombre des syllabes à rimer:",
+        buttonSend: "Rimer",
+        labelResults: "Mots qui riment:",
+        labelAuthor: "Fait par jan Ine",
+        labelWebsite: "Mon site",
+        labelGithub: "Github",
+        labelGitlab: "Gitlab",
+        wordNotFound: "Le mot n'est pas dans la liste"
     }
 };
 const rhymesMap = new Map();
@@ -216,6 +233,13 @@ function changeLanguage(lang) {
                 document.getElementById(key).textContent = value;
                 if(document.getElementById(key).nodeName=="INPUT")document.getElementById(key).value= value;
                 if(document.getElementById("rhymesList").value==language.es.wordNotFound || document.getElementById("rhymesList").value==language.tok.wordNotFound) document.getElementById("rhymesList").value = language.eng.wordNotFound;
+            }
+        }
+        else if (window.location.hash == "#fr") {
+            for(let [key, value] of Object.entries(language.fr)){
+                document.getElementById(key).textContent = value;
+                if(document.getElementById(key).nodeName=="INPUT")document.getElementById(key).value= value;
+                if(document.getElementById("rhymesList").value==language.fr.wordNotFound || document.getElementById("rhymesList").value==language.tok.wordNotFound) document.getElementById("rhymesList").value = language.fr.wordNotFound;
             }
         }
         else if (window.location.hash == "#tok") {
