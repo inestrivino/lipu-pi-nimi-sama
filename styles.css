@@ -1,12 +1,12 @@
-/*Everything*/
+/*-------------EVERYTHING-------------*/
 *{
     margin: 0px;
     padding: 0px;
 }
 
-/*Basic sections*/
+/*-------------BASIC SECTIONS-------------*/
 html{
-    background-color: #D1E5FF;
+    background-color: #6fa2e6;
 }
 
 body{
@@ -16,65 +16,66 @@ body{
 }
 
 header{
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+main div{
+    height: 100%;
+    width: 35%;
+}
+
 main{
+    margin-top: 20px;
     display: flex;
-    justify-content: space-evenly;
-    align-items: stretch;
+    flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 footer{
     margin-top: auto;
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
+    align-items: center;
     background-color: #000099;
     color:#FFFF63;
     min-height: auto;
+    padding-top: 20px;
 }
 
-/*Text*/
+/*-------------TEXT-------------*/
 h1{
     font-family: "Tiny5", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 45px;
+    font-size: 55px;
     text-align: center;
 }
 
-p{
+h2{
     font-family: "Tiny5", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 25px;
+    font-size: 45px;
+    text-decoration: underline;
 }
 
-label{
+p, label, output[type=text]{
     font-family: "Tiny5", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 25px;
-}
-
-output[type=text]{
-    font-family: "Tiny5", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 25px;
+    font-size: 35px;
 }
 
 label:hover{
     cursor:text;
 }
 
-/*Form inputs and selections*/
+/*-------------FORM INPUTS AND SELECTIONS-------------*/
 #inputInfo{
     margin: 10px;
 }
@@ -82,6 +83,7 @@ label:hover{
 input[type=submit], input[type=button]{
     padding: 10px;
     margin-right: 10px;
+    margin-top: 15px;
 
     border-radius: 0px;
     border: none;
@@ -92,7 +94,7 @@ input[type=submit], input[type=button]{
     font-family: "Tiny5", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 25px;
+    font-size: 35px;
 
     transition: 0.2s;
 }
@@ -115,7 +117,7 @@ input[type=text]{
     font-family: "Tiny5", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 25px;
+    font-size: 35px;
 
     width: 200px;
     
@@ -141,7 +143,7 @@ select{
     font-family: "Tiny5", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 25px;
+    font-size: 35px;
 
     transition: 0.3s;
 }
@@ -151,7 +153,7 @@ select:hover{
     color:rgb(58, 58, 58);
 }
 
-/*Language selection*/
+/*-------------LANGUAGE SELECTION-------------*/
 #languageSelection{
     display: flex;
     justify-content: center;
@@ -177,7 +179,7 @@ button:hover{
     cursor:pointer;
 }
 
-/*Socials*/
+/*-------------SOCIALS-------------*/
 .perso-icon{
     width: 50px;
     height: 50px;
@@ -198,7 +200,7 @@ a{
     flex-direction: row;
 }
 
-/*Specific IDs*/
+/*-------------SPECIAL ID'S-------------*/
 #title{
     margin: 10px;
     padding: 10px;
@@ -218,23 +220,37 @@ a{
     margin-bottom: 30px;
 }
 
-/*Small screen changes*/
+/*-------------SMALL SCREEN CHANGES-------------*/
 @media only screen and (max-width: 600px) {
     label, p, input, output{
-        font-size: 20px;
+        font-size: 30px;
+        text-align: center;
+    }
+    h1{
+        font-size: 50px;
+    }
+    h2{
+        font-size: 40px;
     }
     select{
-        font-size: 20px;
+        font-size: 30px;
         width: fit-content;
         height: fit-content;
     }
-    form div{
+    main div{
+        width: 90%;
+        align-items: center;
+        justify-content: center;
+    }
+    form{
         display: flex;
+        flex-wrap: wrap;
+        align-content: center;
         align-items: center;
         justify-content: center;
     }
     #outputInfo{
-        margin-top: 20px;
+        margin-top: 30px;
         text-align: center;
     }
     input[type=text]{

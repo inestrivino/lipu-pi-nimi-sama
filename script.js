@@ -49,13 +49,13 @@ let language = {
         labelSama: "o pana e sama:",
         samaOption1: "sama sama",
         samaOption2: "sama poka",
-        labelSyllabes: "o pana e nanpa kalama pini tawa sama:",
+        labelSyllabes: "o pana e nanpa pi kalama pini tawa sama:",
         buttonSend: "o tawa",
         labelResults: "nimi sama:",
-        labelAuthor: "jan Ine li pali e lipu ni",
+        labelAuthor: "tan jan Ine",
         labelLinkedin: "ilo Linkedin",
         labelGithub: "ilo Github",
-        wordNotFound: "nimi lon ala"
+        wordNotFound: "nimi li lon ala"
     }
 };
 const rhymesMap = new Map();
@@ -79,11 +79,11 @@ function initialization(){
     wordList.forEach(word =>{
         if (!syllabesMap.has(word)) {
             //if the word is not yet on the map we create it with an empty set associated
-            syllabesMap.set(word, new Set());
+            syllabesMap.set(word, new Array());
         }
         if(word.length < 3){
             //if the word only has 2 letters then it only has one syllabe (itself)
-            syllabesMap.get(word).add(word);
+            syllabesMap.get(word).push(word);
         }
         else{
             let i = 0; //to go through the letters of the word
@@ -95,7 +95,7 @@ function initialization(){
             if(vowels.has(wordArray[0])){
                 if(!(word.length>=3 && wordArray[1]=="n" && !vowels.has(wordArray[2]))){
                     i++;
-                    syllabesMap.get(word).add(wordArray[0]);
+                    syllabesMap.get(word).push(wordArray[0]);
                 }
             }
 
@@ -114,7 +114,7 @@ function initialization(){
                     x=3;
                 }
                 //once we have fully defined the syllabe we add it to the set
-                syllabesMap.get(word).add(toAdd);
+                syllabesMap.get(word).push(toAdd);
             }
         }
     });
@@ -137,8 +137,8 @@ function rhymesRequested(){
         var toRhyme="";
         //for each syllabe the word has until we've reached the number of syllabes to rhyme
         //we add the syllabe to the toRhyme string
-        for(let j=syllabesMap.get(word).size-numberSyllabes; j<syllabesMap.get(word).size; j++){
-            toRhyme += Array.from(syllabesMap.get(word))[j];
+        for(let j=syllabesMap.get(word).length-numberSyllabes; j<syllabesMap.get(word).length; j++){
+            toRhyme += syllabesMap.get(word)[j];
         }
 
         //now that we have the string to be rhymed we need to find matches
@@ -180,7 +180,7 @@ function rhymesRequested(){
         
         solution.forEach(rhyme => {
             document.getElementById("rhymesList").append(rhyme + " ");
-            document.getElementById("rhymesList").appendChild(document.createElement("br"));
+            //document.getElementById("rhymesList").appendChild(document.createElement("br"));
         });
     }
     else{
