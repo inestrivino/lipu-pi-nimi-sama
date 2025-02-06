@@ -54,7 +54,7 @@ let language = {
         samaOption1: "sama sama",
         samaOption2: "sama poka",
         labelSyllabes: "o pana e nanpa pi kalama pini tawa sama:",
-        buttonSend: "o tawa",
+        buttonSend: "o pali",
         labelResults: "nimi sama:",
         labelAuthor: "tan jan Ine",
         labelWebsite: "lipu mi",
