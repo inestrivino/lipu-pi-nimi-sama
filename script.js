@@ -30,6 +30,7 @@ let language = {
         labelWebsite: "My website",
         labelGithub: "Github",
         labelGitlab: "Gitlab",
+        labelSeme: "What is Toki Pona?",
         wordNotFound : "Word not in list"
     },
     es: {
@@ -44,6 +45,7 @@ let language = {
         labelWebsite: "Mi web",
         labelGithub: "Github",
         labelGitlab: "Gitlab",
+        labelSeme: "¿Qué es el toki pona?",
         wordNotFound: "La palabra no existe en la lista"
     },
     tok: {
@@ -58,6 +60,7 @@ let language = {
         labelWebsite: "lipu mi",
         labelGithub: "ilo Github",
         labelGitlab: "ilo Gitlab",
+        labelSeme: "toki pona li seme",
         wordNotFound: "nimi li lon ala"
     },
     fr: {
@@ -72,6 +75,7 @@ let language = {
         labelWebsite: "Mon site",
         labelGithub: "Github",
         labelGitlab: "Gitlab",
+        labelSeme: "Quoi est le toki pona?",
         wordNotFound: "Le mot n'est pas dans la liste"
     }
 };
@@ -223,6 +227,9 @@ function changeLanguage(lang) {
     if (window.location.hash) {
         if (window.location.hash == "#es") {
             for(let [key, value] of Object.entries(language.es)){
+                if(key == "labelSeme"){
+                    let a = 0;
+                }
                 document.getElementById(key).textContent = value;
                 if(document.getElementById(key).nodeName=="INPUT")document.getElementById(key).value= value;
                 if(document.getElementById("rhymesList").value==language.eng.wordNotFound || document.getElementById("rhymesList").value==language.tok.wordNotFound) document.getElementById("rhymesList").value = language.es.wordNotFound;

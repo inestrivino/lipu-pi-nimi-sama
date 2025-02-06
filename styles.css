@@ -64,11 +64,16 @@ h2{
     text-decoration: underline;
 }
 
-p, label, output[type=text]{
+p, label, output[type=text], a{
     font-family: "Tiny5", sans-serif;
     font-weight: 400;
     font-style: normal;
     font-size: 35px;
+}
+
+a{
+    font-size: 32px;
+    text-decoration: underline;
 }
 
 label:hover{
@@ -173,10 +178,15 @@ button{
     border: none;
     margin: 5px;
     width:fit-content;
+    height: 50px;
+    box-shadow: 5px 5px #000099;
+    transition: 0.3s;
 }
 
 button:hover{
     cursor:pointer;
+    box-shadow: 8px 8px #000099;
+    color:rgb(58, 58, 58);
 }
 
 /*-------------SOCIALS-------------*/
