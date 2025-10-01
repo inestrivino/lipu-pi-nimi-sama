@@ -3,7 +3,6 @@
 
 <head>
     <!--Metadata-->
-    <meta lang="tok">
     <meta charset="UTF-8">
     <meta name="description" content="lipu sona pi nimi sama">
     <meta name="keywords" content="toki pona, rhymes, poetry">
@@ -16,9 +15,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
     <!--CSS and Javascript-->
     <link rel="stylesheet" href="styles.css">
-    <script>
-       // window.onload = initialization();
-    </script>
 </head>
 
 <body>
@@ -76,28 +72,25 @@
             </button>
         </form>
 
-        <!--Add word button (triggers modal)-->
+        <!--ADD WORD BUTTON-->
         <button data-i18n="new-words-button" id="add-word-button">o pana e nimi sin tawa ilo</button>
 
-        <!-- Rhyme results (hidden until search) -->
+        <!-- RESULTS -->
         <div id="results" class="hidden">
-            <div class="result-card">
-                <h3 class="word-name">word</h3>
-            </div>
         </div>
 
-        <!-- No results placeholder -->
+        <!-- NO RESULTS -->
         <div id="no-results" class="hidden">
-            <p>nimi ale li lon ala. o sin e lukin.</p>
-            <p>No results found. Try another word.</p>
+            <p data-i18n="no-results">nimi pi kalama sama li lon ala. o sin.</p>
         </div>
 
-        <!-- Add word modal -->
+        <!-- ADD WORD MODAL -->
         <div id="add-word-modal" class="modal hidden">
             <div class="modal-content">
                 <button class="close">&times;</button>
                 <form id="add-word-form">
                     <label data-i18n="new-words-label" for="new-word">nimi sin:</label>
+                    <p style="font-size: small;" data-i18n="disclaimer">nimi o jo e kalama pi toki pona</p>
                     <input type="text" id="new-word" placeholder="nimi" required>
                     <button data-i18n="add-new-word" type="submit">o pana</button>
                 </form>
@@ -107,7 +100,7 @@
 
     <!-- Footer -->
     <footer>
-        <a data-i18n="creator" href="www.github.com/inestrivino" target="_blank">mama pi lipu ni</a>
+        <a data-i18n="creator" href="github.com/inestrivino" target="_blank">mama pi lipu ni</a>
         <a data-i18n="code" href="#" target="_blank">nanpa pi lipu ni</a>
         <a data-i18n="tpwhat" href="tokipona.org" target="_blank">toki pona li seme</a>
     </footer>

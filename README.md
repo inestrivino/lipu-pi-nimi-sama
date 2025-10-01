@@ -2,16 +2,16 @@
 
 ni li lipu pona a
 \
-sina pana e nimi la lipu pi nimi sama li pana e nimi pi kalama sama
+sina pana e nimi la lipu pi nimi sama li pana e nimi pi kalama sama tawa sina
 \
-ni li pona tawa musi pi toki lili tawa musi kalama
+ni li pona tawa musi pi toki lili tawa musi kalama kepeken toki pona
 
 ## ken pi lipu ni
 
-sina ken lukin e lipu ni kepeken
+lipu ni li ken kepeken:
 
 - toki Inli (English)
-- toki Katejano (Español)
+- toki Katejano (Castellano)
 - toki Kanse (Français)
 - toki pona
 
@@ -28,7 +28,7 @@ sina pana e wile sina lon poka open la sina lukin e nimi lon poka pini
 sina ken lukin e lipu lon ni:
 ![sitelen pi lipu ni](img/sitelenlipu.png)
 
-## mi wile jo e lipu ni lon ilo tomo mi
+## mi wile jo e lipu ni lon ilo nanpa mi
 
 sina wile ni la o pali e ni:
 
@@ -51,7 +51,7 @@ o pana e pali sina lon ilo "Branch" sin. ni li pini la o kepeken ilo "Pull Reque
 ## alasa sona
 
 - toki pona li seme:
-  - toki pona li toki pona. ona li jo e nimi pi mute ala
+  - toki pona li toki pona. jan Sonja li mama pi toki ni.
 - sina li seme:
   - lipu ni li tan jan Ine (Inés). mi jan pi kama sona. mi kama sona e nanpa e toki pona. tenpo pini la mi wile pali e lipu ni tan ni: mi wile pona e ken mi
 

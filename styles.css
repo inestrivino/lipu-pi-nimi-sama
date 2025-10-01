@@ -35,6 +35,8 @@ body {
     margin: 0 auto;
     padding: 20px;
     font-size: 1.2rem;
+    min-height: calc(100vh - 200px); /* Ensure content takes enough space */
+    padding-bottom: 40px; /* Extra padding at bottom */
 }
 
 header {
@@ -165,26 +167,45 @@ h1 {
 }
 
 /* Results */
-.results {
+/* Results container styling */
+#results {
     margin-top: 20px;
+    margin-bottom: 20px; /* Add space at bottom to prevent footer overlap */
+    max-height: 60vh; /* Limit height and add scrolling if needed */
+    padding-right: 10px; /* Prevent scrollbar from covering content */
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px; /* Add gap between items */
 }
 
+/* Individual result card styling */
 .result-card {
     background: var(--card-bg);
     border-left: 4px solid var(--primary-color);
-    padding: 15px;
-    margin-bottom: 10px;
+    padding: 12px 15px; /* Reduced vertical padding */
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     color: var(--text-color);
+
+
+    min-height: auto; /* Remove any minimum height */
+    display: flex; /* Use flexbox for better content alignment */
+    align-items: center; /* Vertically center content */
+    width: fit-content; /* Minimum width for each card */
 }
 
+/* Word name styling in cards */
 .result-card h3 {
-    margin-top: 0;
+    margin: 0; /* Remove all margins */
     color: var(--accent-color);
     display: flex;
     align-items: center;
     gap: 10px;
+    font-size: 1.1rem; /* Slightly larger text */
+    line-height: 1.2; /* Tighter line height */
+    width: 100%; /* Take full width of card */
 }
 
 .no-results {
@@ -287,9 +308,9 @@ h1 {
 
 /* Footer */
 footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
+    margin-top: auto; /* Push footer to bottom */
+    padding: 20px 0;
+    width: 100%;
     text-align: center;
     margin-top: 30px;
     padding: 10px;

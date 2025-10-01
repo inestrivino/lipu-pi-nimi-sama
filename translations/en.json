@@ -4,14 +4,16 @@
     "subtitle" : "Find rhymes for Toki Pona words",
     "o-pana-nimi" : "Write a word:",
     "rhyme" : "Rhyme type:",
-    "asonant" : "Asonant",
-    "consonant" : "Consonant",
-    "syllabes" : "Number of syllabes:",
+    "asonant" : "Vowel rhyme",
+    "consonant" : "Full rhyme",
+    "syllabes" : "Number of syllables:",
     "search" : "Search",
     "new-words-button" : "Add a new word",
     "new-words-label" : "Write a word:",
     "add-new-word" : "Add",
     "creator" : "Creator of the website",
     "code" : "Code of the website",
-    "tpwhat" : "What is Toki Pona?"
+    "tpwhat" : "What is Toki Pona?",
+    "disclaimer" : "Only works with words that follow Toki Pona phonology",
+    "no-results" : "No results. Try again."
 }

@@ -13,5 +13,7 @@
     "add-new-word" : "Añadir",
     "creator" : "Creadora de la página",
     "code" : "Código de la página",
-    "tpwhat" : "¿Qué es el toki pona?"
+    "tpwhat" : "¿Qué es el toki pona?",
+    "disclaimer" : "Solo funciona con palabras que siguen la fonología del toki pona",
+    "no-results" : "Ningún resultado. Pruebe de nuevo."
 }
