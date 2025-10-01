@@ -309,11 +309,14 @@ footer {
     margin-top: auto; /* Push footer to bottom */
     padding: 20px 0;
     width: 100%;
-    text-align: center;
     margin-top: 30px;
     padding: 10px;
     border-top: 1px solid var(--border-color);
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 footer a {

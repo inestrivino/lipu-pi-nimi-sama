@@ -1,8 +1,8 @@
 # lipu pi nimi sama 📖
 
-"lipu pi nimi sama" is a static website that allows users to find rhyming words in [Toki pona](tokipona.org).
+"lipu pi nimi sama" is a static website that allows users to find rhyming words in [Toki Pona](tokipona.org).
 \
-It was created in 2025 by Inés Triviño (jan Ine) as a personal project.
+It was created in 2025 by Inés Triviño (jan ine) as a personal project.
 The code is licensed under the GNU license. Read the LICENSE file for more information.
 
 [CLICK HERE](https://inestrivino.github.io/lipu-pi-nimi-sama/) to see the website for yourself!
