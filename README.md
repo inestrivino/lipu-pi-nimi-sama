@@ -5,6 +5,8 @@
 It was created in 2025 by Inés Triviño (jan Ine) as a personal project.
 The code is licensed under the GNU license. Read the LICENSE file for more information.
 
+[CLICK HERE](https://inestrivino.github.io/lipu-pi-nimi-sama/) to see the website for yourself!
+
 ## What can the website do
 
 The website has various features:
