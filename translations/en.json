@@ -1,0 +1,17 @@
+{
+    "title" : "Book of rhymes",
+    "language" : "Language:",
+    "subtitle" : "Find rhymes for Toki Pona words",
+    "o-pana-nimi" : "Write a word:",
+    "rhyme" : "Rhyme type:",
+    "asonant" : "Asonant",
+    "consonant" : "Consonant",
+    "syllabes" : "Number of syllabes:",
+    "search" : "Search",
+    "new-words-button" : "Add a new word",
+    "new-words-label" : "Write a word:",
+    "add-new-word" : "Add",
+    "creator" : "Creator of the website",
+    "code" : "Code of the website",
+    "tpwhat" : "What is Toki Pona?"
+}

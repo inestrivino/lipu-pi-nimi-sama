@@ -1,0 +1,17 @@
+{
+    "title" : "Libro de rimas",
+    "language" : "Idioma:",
+    "subtitle" : "Busca rimas para palabras en toki pona",
+    "o-pana-nimi" : "Escribe una palabra:",
+    "rhyme" : "Tipo de rima:",
+    "asonant" : "Asonante",
+    "consonant" : "Consonante",
+    "syllabes" : "Nº de sílabas:",
+    "search" : "Buscar",
+    "new-words-button" : "Añadir palabras",
+    "new-words-label" : "Nueva palabra:",
+    "add-new-word" : "Añadir",
+    "creator" : "Creadora de la página",
+    "code" : "Código de la página",
+    "tpwhat" : "¿Qué es el toki pona?"
+}

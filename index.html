@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="tok">
 
 <head>
     <!--Metadata-->
@@ -13,87 +13,105 @@
     <title>lipu pi nimi sama</title>
     <link rel="icon" type="image/x-icon" href="./img/icon.png">
     <!--Fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
     <!--CSS and Javascript-->
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script> 
     <script>
-        window.onload = initialization();
+       // window.onload = initialization();
     </script>
 </head>
 
 <body>
     <header>
-        <div id="title">
-            <h1>lipu pi nimi sama</h1>
+        <div id="lang-toggle">
+            <span data-i18n="language">toki:</span>
+            <select id="language">
+                <option value="tok">toki pona</option>
+                <option value="en">English</option>
+                <option value="es">Castellano</option>
+                <option value="fr">Français</option>
+            </select>
         </div>
-    </header> 
-
-    <div id="languageSelection">
-        <button onclick="changeLanguage('eng')"><img class="perso-icon" src="img/en_flag.png" alt="English" title="English"></button>
-        <button onclick="changeLanguage('es')"><img class="perso-icon" src="img/es_flag.png" alt="Español" title="Español"></button>
-        <button onclick="changeLanguage('fr')"><img class="perso-icon" src="img/fr_flag.png" alt="Français" title="Français"></button>
-        <button onclick="changeLanguage('tok')"><img class="perso-icon" src="img/tok_flag.png" alt="toki pona" title="toki pona"></button>
-    </div>
+        <button id="theme-toggle">🌓</button>
+    </header>
 
     <main>
-        <div id="inputInfo">
-            <form>
-                <label for="nimi" id="labelNimi">o pana e nimi:</label>
-                <input type="text" id="nimi">
-                <br>
-                <div></div>
-        
-                <label for="sama" id="labelSama">o pana e sama:</label>
-                <select name="sama" id="sama">
-                  <option value="sama sama" id="samaOption1">sama sama</option>
-                  <option value="sama poka" id="samaOption2">sama poka</option>
-                </select>
-                <br>
-                <div></div>
-        
-                <label for="nanpakalama" id="labelSyllabes">o pana e nanpa pi kalama pini tawa sama:</label>
-                <select name="nanpakalama" id="nanpakalama">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-                <div></div>
-                <input type="button" value="o pali" onclick="rhymesRequested()" id="buttonSend">
-            </form> 
+        <!--TITLE AND SUBTITLE-->
+        <h1 data-i18n="title">lipu pi nimi sama</h1>
+        <p data-i18n="subtitle" class="subtitle">sina ken alasa e nimi pi kalama sama</p>
+
+        <!--SEARCH FORM-->
+        <form class="search-form">
+            <!--WORD TO BE RHYMED-->
+            <div class="form-group">
+                <label data-i18n="o-pana-nimi" for="nimi">o pana e nimi:</label>
+                <input type="text" id="nimi" placeholder="nimi" required>
+            </div>
+
+            <!--TYPE OF RHYME-->
+            <div class="form-row">
+                <div class="form-group">
+                    <label data-i18n="rhyme" for="rhyme">sama:</label>
+                    <select id="sama">
+                        <option data-i18n="consonant" value="sama sama">sama sama</option>
+                        <option data-i18n="asonant" value="sama poka">sama poka</option>
+                    </select>
+                </div>
+
+                <!--NUMBER OF SYLLABES TO RHYME-->
+                <div class="form-group">
+                    <label data-i18n="syllabes" for="nanpakalama">nanpa kalama:</label>
+                    <select id="nanpakalama">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+
+            <button data-i18n="search" id="search-button">
+                o lukin
+            </button>
+        </form>
+
+        <!--Add word button (triggers modal)-->
+        <button data-i18n="new-words-button" id="add-word-button">o pana e nimi sin tawa ilo</button>
+
+        <!-- Rhyme results (hidden until search) -->
+        <div id="results" class="hidden">
+            <div class="result-card">
+                <h3 class="word-name">word</h3>
+            </div>
         </div>
-        <div id="outputInfo">
-            <h2 id="labelResults">nimi sama:</h2><br>
-            <output type="text" id="rhymesList" value=""></output>
+
+        <!-- No results placeholder -->
+        <div id="no-results" class="hidden">
+            <p>nimi ale li lon ala. o sin e lukin.</p>
+            <p>No results found. Try another word.</p>
+        </div>
+
+        <!-- Add word modal -->
+        <div id="add-word-modal" class="modal hidden">
+            <div class="modal-content">
+                <button class="close">&times;</button>
+                <form id="add-word-form">
+                    <label data-i18n="new-words-label" for="new-word">nimi sin:</label>
+                    <input type="text" id="new-word" placeholder="nimi" required>
+                    <button data-i18n="add-new-word" type="submit">o pana</button>
+                </form>
+            </div>
         </div>
     </main>
 
+    <!-- Footer -->
     <footer>
-        <div>
-            <p id="labelAuthor">tan jan Ine</p>
-        </div>
-        <div id="socials">
-            <a href="https://github.com/inestrivino" target="_blank">
-                <image class="perso-icon" src="./img/github.png" alt="github icon"></image>
-                <p id="labelGithub">ilo Github</p>
-            </a>
-            <a href="https://gitlab.com/inestrivino" target="_blank">
-                <image class="perso-icon" src="./img/gitlab.png" alt="gitlab icon"></image>
-                <p id="labelGitlab">ilo Gitlab</p>
-            </a>
-            <a href="" target="_blank">
-                <image class="perso-icon" src="img/website.png" alt="website icon"></image>
-                <p id="labelWebsite">lipu mi</p>
-            </a>
-        </div>
-        <div>
-            <a href="https://tokipona.org/" target="_blank"><p id="labelSeme">toki pona li seme </p></a>
-        </div>
+        <a data-i18n="creator" href="www.github.com/inestrivino" target="_blank">mama pi lipu ni</a>
+        <a data-i18n="code" href="#" target="_blank">nanpa pi lipu ni</a>
+        <a data-i18n="tpwhat" href="tokipona.org" target="_blank">toki pona li seme</a>
     </footer>
-    
+    <script src="script.js"></script>
 </body>
-</html> 
+
+</html>

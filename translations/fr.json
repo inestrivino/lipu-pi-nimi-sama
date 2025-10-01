@@ -1,0 +1,17 @@
+{
+    "title": "Livre des rimes",
+    "language": "Langue:",
+    "subtitle": "Trouver des rimes pour les mots en toki pona",
+    "o-pana-nimi": "Écrivez un mot:",
+    "rhyme": "Type de rime:",
+    "asonant": "Assonance",
+    "consonant": "Consonne",
+    "syllabes": "Nombre de syllabes :",
+    "search": "Rechercher",
+    "new-words-button": "Ajouter un nouveau mot",
+    "new-words-label": "Écrivez un mot:",
+    "add-new-word": "Ajouter",
+    "creator": "Créateur du site web",
+    "code": "Code du site web",
+    "tpwhat": "Qu'est-ce que le toki pona?"
+}
