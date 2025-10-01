@@ -1,64 +1,38 @@
 # lipu pi nimi sama 📖
 
-ni li lipu pona a
+"lipu pi nimi sama" is a static website that allows users to find rhyming words in [Toki pona](tokipona.org).
 \
-sina pana e nimi la lipu pi nimi sama li pana e nimi pi kalama sama tawa sina
+It was created in 2025 by Inés Triviño (jan Ine) as a personal project.
+The code is licensed under the GNU license. Read the LICENSE file for more information.
+
+## What can the website do
+
+The website has various features:
+
+- **Change the display language between the available options** (currently: English, Spanish, French and Toki Pona)
+- **Change the theme** (dark or light)
+- **Insert a word to find rhyming Toki Pona words**
+- **Choose what type of rhymes you want** (vowel vs full, number of rhyming syllables)
+- **Add new words to the list of words**. This will allow your own personal words to be shown as rhyming words.
+
+These features are geared towards giving users the possibility of adapting the website to their own needs and Toki Pona use.
 \
-ni li pona tawa musi pi toki lili tawa musi kalama kepeken toki pona
+The minimalistic design of the website was purposefully chosen to fit the philosophy of Toki Pona.
 
-## ken pi lipu ni
+Here is a look at what the website looks like:
 
-lipu ni li ken kepeken:
-
-- toki Inli (English)
-- toki Katejano (Castellano)
-- toki Kanse (Français)
-- toki pona
-
-sina kepeken lipu ni la sina ken:
-
-- wile e sama pi kalama poka anu sama pi kalama sama
-- wile e nanpa pi kalama pini tawa sama
-
-ale ni li pana e ken mute tawa sina
-\
-\
-sina pana e wile sina lon poka open la sina lukin e nimi lon poka pini
-\
-sina ken lukin e lipu lon ni:
 ![sitelen pi lipu ni](img/sitelenlipu.png)
 
-## mi wile jo e lipu ni lon ilo nanpa mi
+## Downloading and contributing
 
-sina wile ni la o pali e ni:
+To get the project, simply download the repository's zip file or clone it through the terminal:
 
 ```bash
 git clone https://github.com/inestrivino/lipu-pi-nimi-sama.git
 ```
 
-anu kepeken ilo "Download Zip"
-\
-tenpo kama la pali ni li pini la sina kepeken lipu "index.html" la sina ken kepeken lipu pi nimi sona lon ilo tomo sina
+This project uses a [branching workflow](https://git-scm.com/book/ms/v2/Git-Branching-Branching-Workflows). To add new features or translations:
 
-## mi wile pana tawa lipu ni
-
-ni li pona
-\
-o pana e wile sina lon ilo "Issues"
-\
-o pana e pali sina lon ilo "Branch" sin. ni li pini la o kepeken ilo "Pull Request"
-
-## alasa sona
-
-- toki pona li seme:
-  - toki pona li toki pona. jan Sonja li mama pi toki ni.
-- sina li seme:
-  - lipu ni li tan jan Ine (Inés). mi jan pi kama sona. mi kama sona e nanpa e toki pona. tenpo pini la mi wile pali e lipu ni tan ni: mi wile pona e ken mi
-
-\
-lipu ni li pona tawa sina la ni li pona tawa mi
-\
-sina wile pana e pilin pona tawa mi la o pali e ni:
-
-- pana e mun tawa ni ⭐
-- toki e lipu ni tawa jan pona sina 💬
+1. Create an issue
+2. Create a branch for the feature
+3. When the feature is fully implemented, create a merge request
